@@ -10,5 +10,13 @@
 }
 
 <div>
-    @grid.GetHtml(tableStyle: "table table-striped table-inverse", headerStyle: "thead-inverse")
+    @grid.GetHtml(
+        tableStyle: "table table-striped table-inverse",
+        headerStyle: "thead-inverse",
+
+        columns: grid.Columns(
+            grid.Column("Name"),
+            grid.Column("Price")
+            )
+        )
 </div>
