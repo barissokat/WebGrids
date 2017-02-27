@@ -1,7 +1,13 @@
-﻿@model WebGrids.Models.Product
+﻿@model IEnumerable<WebGrids.Models.Product>
 
 @{
     Layout = null;
 }
 
+@{
+    var grid = new WebGrid(Model);
+}
 
+<div>
+    @grid.GetHtml()
+</div>
