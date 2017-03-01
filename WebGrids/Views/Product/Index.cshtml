@@ -6,7 +6,22 @@
 }
 
 @{
-    var grid = new WebGrid(Model, defaultSort: "Name", rowsPerPage: 3);
+    string productName = Request["productName"];
+    var products = WebGrids.Models.Data.SearchProduct(productName);
+    var grid = new WebGrid(products, defaultSort: "Name", rowsPerPage: 10);
+}
+
+<br />
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            Product Name:
+            <input type="text" name="productName" value="@Request["productName"]" />
+            <input type="submit" value="Search" />
+        </div>
+    </div>
 }
 
 <div>
@@ -24,6 +39,7 @@
             )
         )
 </div>
+
 @section Scripts{
     <script type="text/javascript">
         $(function () {
