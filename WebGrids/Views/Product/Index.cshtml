@@ -15,10 +15,23 @@
 
         tableStyle: "table table-striped table-inverse",
         headerStyle: "thead-inverse",
-        
+
         columns: grid.Columns(
+            grid.Column("ID"),
             grid.Column("Name"),
-            grid.Column("Price")
+            grid.Column("Price"),
+            grid.Column("Count")
             )
         )
 </div>
+@section Scripts{
+    <script type="text/javascript">
+        $(function () {
+            $('tbody tr').on('click', function () {
+                location.href = '/Product/Details/' + $(this).find('td:first').text();
+            }).on('hover', function () {
+                $(this).toggleClass('mousehover');
+            });
+        });
+    </script>
+}
