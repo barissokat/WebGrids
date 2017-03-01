@@ -6,14 +6,14 @@
 }
 
 @{
-    var grid = new WebGrid(Model, defaultSort: "Name", rowsPerPage: 2);
+    var grid = new WebGrid(Model, defaultSort: "Name", rowsPerPage: 3);
 }
 
 <div>
     @grid.GetHtml(
         mode: WebGridPagerModes.All,
 
-        tableStyle: "table table-striped table-inverse",
+        tableStyle: "table table-inverse",
         headerStyle: "thead-inverse",
 
         columns: grid.Columns(
@@ -29,7 +29,7 @@
         $(function () {
             $('tbody tr').on('click', function () {
                 location.href = '/Product/Details/' + $(this).find('td:first').text();
-            }).on('hover', function () {
+            }).hover(function () {
                 $(this).toggleClass('mousehover');
             });
         });
