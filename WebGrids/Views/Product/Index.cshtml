@@ -11,9 +11,11 @@
 
 <div>
     @grid.GetHtml(
+        mode: WebGridPagerModes.All,
+
         tableStyle: "table table-striped table-inverse",
         headerStyle: "thead-inverse",
-
+        
         columns: grid.Columns(
             grid.Column("Name"),
             grid.Column("Price")
