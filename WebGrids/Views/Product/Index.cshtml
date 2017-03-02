@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<WebGrids.Models.Product>
 
 @{
-    Layout = null;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -40,6 +39,9 @@
         )
 </div>
 
+<input id="openWithExcel" type="button" value="Open with Excel" />
+<div id="result"></div>
+
 @section Scripts{
     <script type="text/javascript">
         $(function () {
@@ -47,6 +49,12 @@
                 location.href = '/Product/Details/' + $(this).find('td:first').text();
             }).hover(function () {
                 $(this).toggleClass('mousehover');
+            });
+        });
+
+        $(function () {
+            $("#openWithExcel").on("click", function () {
+                $('<iframe src ="/Product/OpenWithExcel"></iframe>').appendTo('#result').hide();
             });
         });
     </script>

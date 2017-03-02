@@ -1,0 +1,27 @@
+﻿@model IEnumerable<WebGrids.Models.Product>
+
+@{
+    Layout = null;
+    Response.AddHeader("Content-disposition", "attachment; filename = products.xls");
+    Response.ContentType = "application/octet-stream";
+    var Products = Model;
+    var firstRow = Products.FirstOrDefault();
+}
+
+<table style="border: 1px solid black">
+    <tr style="font-weight: bold">
+        @foreach (var property in firstRow.GetType().GetProperties())
+        {
+            <td style="border: 1px solid #a59f9f;">@property.Name</td>
+        }
+    </tr>
+    @foreach (var product in Products)
+    {
+        <tr>
+            @foreach (var productProp in product.GetType().GetProperties())
+            {
+                <td style="border: 1px solid black;">@productProp.GetValue(product, null)</td>
+            }
+        </tr>
+    }
+</table>

@@ -14,5 +14,9 @@ namespace WebGrids.Controllers
         {
             return View();
         }
+        public ActionResult OpenWithExcel()
+        {
+            return View(Data.Products);
+        }
     }
 }
